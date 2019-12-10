@@ -1,0 +1,53 @@
+<div class="container">
+<h2 class="mt-4">Virtual Machine credentials </h2>
+    <form role="form" #ipForm="ngForm" (ngSubmit)="getStats(ipForm)">
+        <div class="form-body">
+            <div class="form-group">
+                <input type="text" class="form-control" name="ip" autocomplete="off" placeholder="0.0.0.0" #ip="ngModel"   required ngModel>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" autocomplete="off" placeholder="username" #username="ngModel"   required ngModel>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" autocomplete="off" placeholder="password" #password="ngModel"   required ngModel>
+            </div>
+        </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!ipForm.valid">Submit</button>
+    </form>
+
+    <h2>Disk Stats</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>File System</th>
+        <th>Size</th>
+        <th>Used</th>
+        <th>Avail</th>
+        <th>Use%</th>
+        <th>Mounted on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of statsData;" class="{{data.class}}">
+        <td>
+          {{data.file_system}}
+        </td>
+        <td>
+          {{data.size}}
+        </td>
+        <td>
+          {{data.used}}
+        </td>
+        <td>
+          {{data.avail}}
+        </td>
+        <td>
+          {{data.use}} 
+        </td>
+        <td>
+          {{data.mounted}} 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
